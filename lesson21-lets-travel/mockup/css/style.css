@@ -1,0 +1,28 @@
+.header-navbar {
+	justify-content: space-between;
+}
+.carousel-control-prev,
+.carousel-control-next{
+	background: 0 0;
+	border: 0;
+}
+.footer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 50px 0 20px 0;
+}
+.footer .title{
+	opacity: 0.5;	
+}
+.footer-modal-button{
+	display: flex;
+	justify-content: center;
+	margin-bottom: 10px;
+}
+.card{
+	width: 100%;
+}
+.card-item{
+	padding-top: 20px;
+}
