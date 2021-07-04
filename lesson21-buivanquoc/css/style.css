@@ -1,0 +1,13 @@
+
+main
+{
+	margin-top: 15px;
+}
+.d-flex
+{
+	margin-right: -16px;
+}
+main .carousel-indicators button
+{
+	width: 20px;
+}
