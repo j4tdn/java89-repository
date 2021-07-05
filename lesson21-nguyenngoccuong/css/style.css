@@ -1,0 +1,124 @@
+/*==================*/
+/*= RESET CSS ======*/
+/*==================*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+	font-family: Helvetica Neue,Helvetica,Arial,Utkal,sans-serif;
+	color: #262626;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+a {
+	text-decoration: none;
+}
+
+
+/*==================*/
+/*= CNN CSS  ======*/
+/*==================*/
+.text-black {
+	color: black;
+}
+
+/*==================*/
+/*= HEADER =========*/
+/*==================*/
+.navbar {
+	height: 40px;
+	background: black;
+	color:  white;
+	padding: 0 40px;
+}
+
+.container-fluid {
+	padding: 0;
+}
+
+/*==================*/
+/*= MAIN ===========*/
+/*==================*/
+.articles-title {
+	display: flex;
+	justify-content: center;
+}
+.articles-title ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+}
+
+.articles-title ul li {
+	float: left;
+}
+
+.articles-title ul li::after {
+	content:  '|';
+	margin: 0 7px;
+}
+
+.articles-title ul li a {
+	color: #262626;
+}
+
+.trending {
+	color: #e30000;
+}
+
+.big-title {
+	font-size: 36px;
+}
+
+.has-line-below::after {
+	content: '';
+	display: block;
+	height: 1px;
+	width: 100%;
+	border-top: 1px solid #cccccc;
+	margin-top: 7px;
+	margin-bottom: 7px;
+}
+
+.category {
+	color: #404040;
+	background-color: #f2f2f2;
+	padding: 10px 5px;
+}
