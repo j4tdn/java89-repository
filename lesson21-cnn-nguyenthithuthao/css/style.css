@@ -1,0 +1,118 @@
+/*==================*/
+/*= RESET CSS ======*/
+/*==================*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+	font-family: Helvetica Neue,Helvetica,Arial,Utkal,sans-serif;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+a {
+	text-decoration: none;
+}
+
+
+/*==================*/
+/*= CNN CSS  ======*/
+/*==================*/
+.page-header{
+	
+	background: #181713;
+	position:  absolute;
+	top: 0;
+	left: 0;
+	height: 85px;
+	width: 100%;
+}
+.wrapper{
+	width: 1120px;
+	height: 100%;
+	margin: 0 auto;
+
+}
+.page-header .logo{
+	float: left;
+} 
+.page-header .main-nav{
+	line-height: 66px;
+	float: right;
+
+}
+.page-header .main-nav ul li{
+	display: inline-block;
+	margin-left: 86px;
+}
+.page-header .main-nav ul li a{
+	text-transform: uppercase;
+	text-decoration:none;
+	color: inherit;
+	}
+
+
+	/*============footer==============*/
+	.page-footer{
+	height: 1000px;
+	width: 100%;
+	background: #181713; 
+	margin: 0 auto;
+	
+}
+.footer{
+	padding-top: 100px;
+	padding-bottom: 27px;
+	width: 20%;
+	height: 100%;
+	float: left;
+}
+.title{
+	font-size: 17px;
+	font-family: Helvetica Neue;
+	padding-bottom: 27px; 
+
+}
+
+.list li{
+	font-size: 14px;
+	font-family: Helvetica Neue;
+	color: #fcfff4;
+	padding-bottom:18px;
+
+}
