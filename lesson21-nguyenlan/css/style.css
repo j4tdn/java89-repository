@@ -1,0 +1,136 @@
+/*==================*/
+/*= RESET CSS ======*/
+/*==================*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+	font-family: Helvetica Neue,Helvetica,Arial,Utkal,sans-serif;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+a {
+	text-decoration: none;
+}
+
+
+/*==================*/
+/*= CNN CSS  ======*/
+/*==================*/
+
+/*================= page nav ================*/
+.page-nav {
+	background: #000;
+	width: 100%;
+	position: absolute;
+	z-index: 100;
+}
+ 
+.page-nav .container {
+	display: flex;
+	align-items: center;
+}
+.logo img {
+	/*height: 60px;*/
+
+
+}
+
+.page-nav ul {
+	margin-left: 10px;
+	display: flex;
+    list-style: none;
+    column-gap: 14px;
+}
+
+.page-nav li {
+	display: list-item;
+}
+
+.page-nav a {
+	color: #fff;
+    text-decoration: none
+}
+
+.page-nav {
+	position: fixed;
+    top: 0;
+    left: 0;
+}
+
+main::before , main::after {
+	box-sizing: border-box;	
+}
+
+.mt-95 {
+	margin-top: 95px;
+}
+footer {
+	height: 80px;
+	margin-top: 50px;
+}
+footer>.container, footer .row {
+	height: 100%;
+}
+
+main a {
+	text-decoration: none;
+	color: #000;
+	display: block;
+}
+main a::after {
+	content: "";
+	display: block;
+	width: 96%;
+	height: 1px;
+	background: #e1e1e1;
+	margin: 5px 0 5px;
+}
+main a:active , main a:hover {
+	color: red;
+}
+
+h2 {
+	font-size: 30px;
+	text-align: center;
+}
+
+.mg-20 {
+	margin-top: 20px;
+}
