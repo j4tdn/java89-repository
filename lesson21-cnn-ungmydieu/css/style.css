@@ -82,6 +82,15 @@ header nav .nav-link {
 	color: #e6e6e6;
 }
 
+.d-flex ul >li {
+	margin-left: 20px;
+	font-size: 25px;
+}
+
+.d-flex .dropdown-spec {
+	font-size: 13px;
+}
+
 /* Main
 --------------------------- */
 
