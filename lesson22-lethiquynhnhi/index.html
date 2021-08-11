@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+  </head>
+  <body>
+    <div class="ballons-container">
+      <div class="ballons-result">You popped 0 ballons</div>
+      <audio controls autoplay class="bg-sound">
+        <source src="../sounds/bg-music.mp3" type="audio/mpeg" />
+      </audio>
+    </div>
+    <div class="overlay">
+      <div class="alert-ballon">
+        <p class="sorry">Sorry!</p>
+        <img src="images/sad.png" />
+        <div class="ballons-result"></div>
+        <p>Play again ?</p>
+        <div>
+          <button class="btn-yes">Yes</button>
+          <button class="btn-no">No</button>
+        </div>
+      </div>
+
+      <div class="alert-finish">
+        <p class="congratulation">Congratulation!</p>
+        <img src="images/bunch-of-balloons.jpg" />
+        <div class="ballons-result">aa</div>
+        <p>You are a Champion</p>
+      </div>
+    </div>
+
+    <script src="js/script.js"></script>
+  </body>
+</html>
