@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Block manipulation</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div class="control">
+        <div class="container">
+            <p>Position X</p>
+            <input id="offsetX" type="range" min=0 max=800 value="0" onchange="changeOffsetX(event)">
+        </div>
+        <div class="container position-y">
+            <p>Position Y</p>
+            <input id="offsetY" type="range" min=0 max=600 value="0" onchange="changeOffsetY(event)">
+        </div>
+        <div class="container">
+            <p>Size</p>
+            <input id="size" type="range" min=0 max=500 value=100 onchange="changeSize(event)">
+        </div>
+        <div class="container">
+            <p>Opacity</p>
+            <input id="opacity" type="range" min=0 max=1 step=0.1 value=1 onChange="changeOpacity(event)">
+        </div>
+        <div class="container">
+            <p>Shape Type</p>
+            <select id="shape-type" value=0 onchange="changeType(event)">
+                <option value=0>Circle</option>
+                <option value=1>Square</option>
+                <option value=2>Rhombus</option>
+            </select>
+        </div>
+        <div class="container">
+            <p>Hex</p>
+            <input id="hex" type="text" onchange="changeHex(event)" />
+        </div>
+        <div class="container">
+            <p>RGBA</p>
+            <div>
+                <input id="red" type="range" min=0 max=255 step=1 value=0 onChange="changeR(event)">
+                <label for="red">R</label>
+            </div>
+            <div>
+                <input id="green" type="range" min=0 max=255 step=1 value=0 onChange="changeG(event)">
+                <label for="green">G</label>
+            </div>
+            <div>
+                <input id="blue" type="range" min=0 max=255 step=1 value=0 onChange="changeB(event)">
+                <label for="blue">B</label>
+            </div>
+            <div>
+                <input id="a" type="range" min=0 max=1 step=0.1 value=1 onChange="changeA(event)">
+                <label for="a">A</label>
+            </div>
+        </div>
+    </div>
+
+    <div style="position: relative;">
+        <div id="shape"></div>
+    </div>
+
+    <script>
+        var shape = document.getElementById("shape");
+        var controlSize = document.getElementById("size");
+        shape.style.height = controlSize.value + "px";
+        shape.style.width = controlSize.value + "px";
+
+        function changeSize(event) {
+            shape.style.height = event.target.value + "px";
+            shape.style.width = event.target.value + "px";
+        }
+
+        var controlOpacity = document.getElementById("opacity");
+        shape.style.opacity = controlOpacity.value;
+
+        function changeOpacity(event) {
+            shape.style.opacity = event.target.value;
+        }
+
+        var controlShapeType = document.getElementById("shape-type");
+        if (controlShapeType.value === "0") {
+            shape.style.borderRadius = "50%";
+        } else if (controlShapeType.value === "1") {
+            shape.style.borderRadius = "0px";
+        } else {
+            shape.style.borderRadius = "0px";
+            shape.style.transform = "rotate(90deg)";
+        }
+
+        function changeType(event) {
+            if (controlShapeType.value === "0") {
+                shape.style.borderRadius = "50%";
+            } else if (controlShapeType.value === "1") {
+                shape.style.borderRadius = "0px";
+                shape.style.transform = "rotate(0deg)";
+            } else {
+                shape.style.borderRadius = "0px";
+                shape.style.transform = "rotate(45deg)";
+            }
+        }
+
+        var controlHex = document.getElementById("hex");
+
+        function changeHex(event) {
+            shape.style.backgroundColor = "#" + event.target.value;
+        }
+
+        var controlRed = document.getElementById("red");
+        var controlGreen = document.getElementById("green");
+        var controlBlue = document.getElementById("blue");
+        var controlA = document.getElementById("a");
+
+        function changeR(event) {
+            shape.style.backgroundColor = `rgba(${event.target.value},${controlGreen.value},${controlBlue.value},${controlA.value})`;
+        }
+
+        function changeG(event) {
+            shape.style.backgroundColor = `rgba(${controlRed.value},${event.target.value},${controlBlue.value},${controlA.value})`;
+        }
+
+        function changeB(event) {
+            shape.style.backgroundColor = `rgba(${controlRed.value},${controlGreen.value},${event.target.value},${controlA.value})`;
+        }
+
+        function changeA(event) {
+            shape.style.backgroundColor = `rgba(${controlRed.value},${controlGreen.value},${controlBlue.value},${event.target.value})`;
+        }
+
+        var controlX = document.getElementById("offSetX");
+        var controlY = document.getElementById("offSetY");
+
+        function changeOffsetX(event) {
+            shape.style.left = event.target.value + "px";
+        }
+
+
+        function changeOffsetY(event) {
+            shape.style.top = event.target.value + "px";
+        }
+    </script>
+</body>
+
+</html>
