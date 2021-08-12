@@ -1,0 +1,86 @@
+.position_parent {
+  width: 100%;
+  display: flex;
+}
+.position_y {
+  width: 200px;
+  height: 200px;
+  color: white;
+  background-color: gray;
+}
+.position_x {
+  margin-left: 10px;
+  width: 200px;
+  height: 200px;
+  color: white;
+  background-color: gray;
+}
+
+.size {
+  margin-left: 10px;
+  width: 200px;
+  height: 200px;
+  color: white;
+  background-color: gray;
+}
+
+.opacity {
+  margin-left: 10px;
+  width: 200px;
+  height: 200px;
+  color: white;
+  background-color: gray;
+}
+
+.select {
+  margin-left: 10px;
+  width: 200px;
+  height: 200px;
+  color: white;
+  background-color: gray;
+  display: flex;
+  flex-direction: column;
+}
+
+.color {
+  margin-left: 10px;
+  width: 200px;
+  height: 200px;
+  color: white;
+  background-color: gray;
+  display: flex;
+  flex-direction: column;
+}
+.rgb {
+  margin-left: 10px;
+  width: 200px;
+  height: 200px;
+  color: white;
+  background-color: gray;
+  display: flex;
+  flex-direction: column;
+}
+.slider {
+  width: 100%;
+  height: 25px;
+  background: #d3d3d3;
+  outline: none;
+  opacity: 0.7;
+  padding: 0;
+  margin: 0;
+}
+.slider:hover {
+  opacity: 1;
+}
+
+.square_parent {
+  margin-top: 20px;
+  position: relative;
+}
+.square {
+  background: black;
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  top: 0;
+}
