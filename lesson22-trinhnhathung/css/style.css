@@ -1,0 +1,71 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+body {
+    position: relative;
+}
+
+.play-area {
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+}
+
+#result {
+    display: inline-block;
+    position: absolute;
+    left: 50%;
+    bottom: 5px;
+    transform: translateX(-50%);
+    z-index: 1000;
+    background-color: rgb(175, 175, 175);
+    padding: 10px;
+    border-radius: 10px;
+}
+
+@keyframes up {
+    from {
+        transform: translateY(100%);
+    }
+    to {
+        transform: translateY(-100vh);
+    }
+}
+
+.popup {
+    width: 100%;
+    height: 100vh;
+    background-color: rgb(61, 61, 61);
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: 500;
+    display: none;
+}
+
+.popup .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 25%;
+    height: 60%;
+    border-radius: 10px;
+    background-color: white;
+    padding: 20px 0px;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.popup .container p {
+    margin: 5px;
+}
+
+.popup .container img {
+    height: 70%;
+    width: 80%;
+}
