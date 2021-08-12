@@ -1,0 +1,31 @@
+.options {
+  width: 100%;
+  display: flex;
+}
+.positionY {
+  width: 200px;
+  height: 200px;
+  color: white;
+  background-color: gray;
+}
+.option-style {
+  margin-left: 10px;
+  width: 200px;
+  height: 150px;
+  color: white;
+  background-color: rgba(0,0,0,0.8);
+  border-radius: 5%;
+  text-align: center;
+}
+
+.square_wrapper{
+  margin: 10px auto;
+  position: relative;
+}
+.square {
+  background: black;
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  top: 0;
+}

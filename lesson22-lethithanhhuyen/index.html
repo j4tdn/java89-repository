@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Block Manipulation</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <script language="javascript" src="js/script.js"></script>
+  </head>
+  <body>
+    <div class="options">
+      <div class="option-style positionY">
+        <p>Position Y</p>
+        <input type="range" min="0" max="600" value="0" id="positionY" />
+      </div>
+
+      <div class="option-style positionX">
+        <p>Position X</p>
+        <input type="range" min="0" max="800" value="0" id="positionX" />
+      </div>
+
+      <div class="option-style size">
+        <p>Size</p>
+        <input type="range" min="0" max="2" step="0.2" value="0" id="size" />
+      </div>
+
+      <div class="option-style opacity">
+        <p>Opacity</p>
+        <input type="range" min="0" max="1" step="0.1" value="1" id="opacity" />
+      </div>
+
+      <div class="option-style select">
+        <p>Shape type</p>
+        <select id="select">
+          <option value="square"> Square</option>
+          <option value="circle">Circle</option>
+          <option value="rhombus">Rhombus</option>
+        </select>
+      </div>
+
+      <div class="option-style color">
+        <p>HEX</p>
+        
+        <input type="text" id="color" />
+      </div>
+     
+      <div class="option-style rgb">
+        <p>RGBA</p>
+        <input type="range" min="0" max="255" step="1" value="0" id="r" /> 
+        <input type="range" min="0" max="255" step="1" value="0" id="g" />
+        <input type="range" min="0" max="255" step="1" value="0" id="b" />
+        <input type="range" min="0" max="1" step="0.1" value="1" id="a" />
+      </div>
+    </div>
+ 
+    <div class="square_wrapper">
+      <div class="square" id="square"></div>
+    </div>
+  
+  </body>
+</html>
