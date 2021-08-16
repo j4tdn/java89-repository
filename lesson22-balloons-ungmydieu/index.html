@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Ballons</title>
+    <link rel="stylesheet" href="css/index.css" />
+  </head>
+  <body>
+    <div id="play_area" class="play-area" onClick="checkClick()">
+      <audio id="sound-bg" controls autoplay loop>
+        <source  src="./sounds/bg-music.mp3" type="audio/mpeg">
+      </audio>
+    </div>
+    <!-- result form  -->
+    <div class="result_wrapper">
+      <p id="result">You popped 0 balloons</p>
+    </div>
+
+    <!-- lose modal  -->
+    <div id="lose_popup" class="lose-popup">
+      <p class="fw-bold">Sorry!</p>
+      <img src="images/sad.png" alt="sad_ballon" />
+      <p class="fw-bold" id="lose_result"></p>
+      <p>Play again</p>
+      <button type="button" id="btn_play_yes" onClick="playAgain('yes')">
+        Yes
+      </button>
+      <button type="button" id="btn_play_no" onClick="playAgain('no')">
+        No
+      </button>
+    </div>
+
+    <!-- win modal  -->
+    <div id="win_popup" class="win-popup">
+      <p class="fw-bold">Congratulations!</p>
+      <img src="images/balloons.png" alt="sad_ballon" />
+      <p class="fw-bold">You popped all 10 ballons.</p>
+      <p>You are a champion!</p>
+    </div>
+
+    <script src="js/index.js"></script>
+  </body>
+</html>

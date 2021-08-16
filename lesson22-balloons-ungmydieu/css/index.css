@@ -1,0 +1,84 @@
+.fw-bold {
+  font-weight: bold;
+}
+
+
+
+body {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+}
+
+.play-area {
+  width: 95%;
+  height: 95%;
+  overflow: hidden;
+  /* border: 1px solid #000; */
+  position: relative;
+}
+
+.result_wrapper {
+  position: absolute;
+  bottom: 0;
+  left: calc(50vw - 120px);
+  background-color: azure;
+  border-radius: 10px;
+  color: #000;
+  margin: 0 auto;
+  width: 250px;
+  padding: 5px;
+  text-align: center;
+}
+
+.lose-popup {
+  display: none;
+  position: absolute;
+  z-index: 10;
+  width: 400px;
+  height: 520px;
+  text-align: center;
+  left: calc(50% - 200px);
+  top: calc(50% - 300px);
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 0 10px #333333;
+}
+
+.win-popup {
+  display: none;
+  position: absolute;
+  z-index: 10;
+  width: 500px;
+  height: 600px;
+  text-align: center;
+  left: calc(50vw - 250px);
+  top: calc(50vh - 350px);
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 0 10px #333333;
+}
+
+.win-popup img {
+  width: 442px;
+  height: auto;
+}
+
+.hotairballoon {
+  position: absolute;
+  top: 0;
+  left: 200px;
+  width: 155px;
+  height: 935px;
+  background: url(../images/balloon-blue.png) 0 0 no-repeat;
+  /* animation: propel-balloon 10s linear; */
+}
+  
+  @keyframes up {
+    from {
+      transform: translateY(100vh);
+    }
+    to {
+      transform: translateY(-300vh);
+    }
+  }
