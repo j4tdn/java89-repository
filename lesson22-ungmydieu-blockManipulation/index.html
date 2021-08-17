@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Block Manipulation</title>
+    <link rel="stylesheet" href="css/index.css" />
+  </head>
+  <body>
+    <div class="controls">
+      <div class="block-control pos-y">
+        <label for="pos-y">Position Y</label>
+        <div class="pos-y__wrapper">
+          <input
+          type="range"
+          list="position-y"
+          id="pos-y"
+          min="0"
+          max="600"
+          value="350"
+          step="10"
+          onChange="changePosY(event)"
+        />
+        <datalist id="position-y">
+          <option value="0" label="0"></option>
+          <option value="600" label="600"></option>
+        </datalist>
+        </div>
+      </div>
+      <div class="block-control pos-x">
+        <label for="pos-x">Position X</label>
+        <input
+          type="range"
+          list="position-x"
+          id="pos-x"
+          min="0"
+          max="800"
+          value="500"
+          step="10"
+          onChange="changePosX(event)"
+        />
+        <datalist id="position-x">
+          <option value="0" label="0"></option>
+          <option value="800" label="800"></option>
+        </datalist>
+      </div>
+      <div class="block-control size">
+        <label for="size">Size</label>
+        <input type="range" list="size-list" id="size" min="0" max="2" value="1.6" step="0.1" onChange="changeSize(event)" />
+        <datalist id="size-list">
+          <option value="0" label="0"></option>
+          <option value="2" label="2"></option>
+        </datalist>
+      </div>
+      <div class="block-control opacity">
+        <label for="opacity">Opacity</label>
+        <input
+          type="range"
+          list="opacity-list"
+          id="opacity"
+          min="0"
+          max="1"
+          value="0.5"
+          step="0.1"
+          onChange="changeOpacity(event)"
+        />
+        <datalist id="opacity-list">
+          <option value="0" label="0"></option>
+          <option value="1" label="1"></option>
+        </datalist>
+      </div>
+      <div class="block-control shape-type">
+        <label for="shape-type">Shape Type</label>
+        <select name="shape" id="shape-type" value="square" onChange="listenShapeTypeChange(event)">
+          <option value="square">Square</option> 
+          <option value="circle">Circle</option>
+          <option value="rhombus">Rhombus</option>
+        </select>
+        <button id="btn-shape" onClick="changeShape()">OK</button>
+      </div>
+      <div class="block-control hex-color">
+        <label for="hex-color">HEX</label>
+        <form action="#" onsubmit="changeHexColor(event)">
+          #<input type="text" id="hex-color" name="hex-color" />
+        </form>
+      </div>
+      <div class="block-control rgba-color">
+        <label for="rgba-color">RGBA</label>
+        <input
+          type="range"
+          name=""
+          id="red"
+          min="0"
+          max="255"
+          value="255"
+          step="1"
+          onchange="changeRed(event)"
+        />r
+        <input
+          type="range"
+          name=""
+          id="green"
+          min="0"
+          max="255"
+          value="0"
+          step="1"
+          onchange="changeGreen(event)"
+        />g
+        <input
+          type="range"
+          name=""
+          id="blue"
+          min="0"
+          max="255"
+          value="0"
+          step="1"
+          onchange="changeBlue(event)"
+        />b
+        <input
+          type="range"
+          name=""
+          id="alpha"
+          min="0"
+          max="1"
+          value="1"
+          step="0.1"
+          onchange="changeAlpha(event)"
+        />a
+      </div>
+    </div>
+
+    <div style="position: relative">
+      <div class="shape" id="shape"></div>
+    </div>
+
+    <script src="js/index.js"></script>
+  </body>
+</html>

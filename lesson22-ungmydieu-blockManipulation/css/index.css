@@ -1,0 +1,44 @@
+datalist {
+  display: flex;
+  justify-content: space-between;
+}
+
+.controls {
+  display: flex;
+  column-gap: 10px;
+}
+
+.block-control {
+  width: 150px;
+  height: 200px;
+  border-radius: 10px;
+  background-color: #00000099;
+  padding: 10px;
+  text-align: center;
+  color: white;
+}
+
+.block-control label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.shape-type input,
+.shape-type select,
+.hex-color input {
+  width: 129px;
+}
+
+/* input style ------------ */
+.pos-y__wrapper {
+  transform: rotate(-90deg);
+  margin-top: 70px;
+}
+
+.shape {
+  position: absolute;
+  margin-top: 150px;
+  width: 150px;
+  height: 150px;
+  background-color: #FF0000;
+}
