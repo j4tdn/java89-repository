@@ -1,0 +1,75 @@
+@keyframes move_up {
+    0% {top: 710px;}
+    99% {top: -410px;}
+    100% {display: none;}
+}
+
+body {
+    overflow: hidden;
+}
+
+.ball {
+    background-image: url('../images/balloon-blue.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    top: -400px;
+    height: 200px;
+    width: 100px;
+    position: absolute;
+    animation-name: move_up;
+}
+
+#scores {
+    height: 90px;
+    width: 400px;
+    background-color: #999;
+    border-radius: 20px 20px 0 0;
+    position: relative;
+    margin: auto;
+    margin-top: 630px;
+    font-size: 20px;
+    line-height: 90px;
+    text-align: center;
+}
+
+#end {
+    height: 500px;
+    width: 400px;
+    position: absolute;
+    background-color: #fff;
+    top: 30px;
+    margin-left: 36%;
+    z-index: 100;
+    border-radius: 20px;
+    box-shadow: -1px -2px 15px -6px #000000;
+}
+
+div img {
+    margin: 10px auto;
+    display: flex;
+}
+
+.form-text {
+    font-size: 20px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.btn {
+    display: flex;
+    justify-content: center;
+}
+
+button {
+    height: 20px;
+    width: 40px;
+    margin: 20px;
+}
+
+.hide {
+    opacity: 0;
+}
+
+.show {
+    opacity: 1;
+}
