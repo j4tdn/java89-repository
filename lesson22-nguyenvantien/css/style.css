@@ -1,0 +1,60 @@
+.main {
+    display: flex;
+    gap: 20px;
+}
+
+.block {
+    height: 150px;
+    width: 150px;
+    background: #111111; /* Old browsers */
+    background: -moz-linear-gradient(top,  #111111 0%, #131313 0%, #111111 0%, #1c1c1c 5%, #131313 13%, #000000 27%, #000000 60%, #2c2c2c 75%, #000000 89%, #4c4c4c 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top,  #111111 0%,#131313 0%,#111111 0%,#1c1c1c 5%,#131313 13%,#000000 27%,#000000 60%,#2c2c2c 75%,#000000 89%,#4c4c4c 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom,  #111111 0%,#131313 0%,#111111 0%,#1c1c1c 5%,#131313 13%,#000000 27%,#000000 60%,#2c2c2c 75%,#000000 89%,#4c4c4c 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    color: white;
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    padding: 15px;
+    opacity: 0.8;
+}
+
+.title {
+    font-size: 20px;
+    text-align: center;
+    padding-bottom: 15px;
+}
+
+input {
+    width: 100px;
+    margin: 0 auto;
+}
+
+#ok {
+    width: 60px;
+    margin: 20px auto;
+}
+
+span {
+    margin-left: 10px;
+}
+
+.block-rgba span {
+    line-height: 20px;
+}
+
+.block-rgba {
+    height: 20px;
+}
+
+#positionY {
+    transform: rotate(90deg);
+    position: relative;
+    top: 40px;
+}
+
+#block {
+    margin-top: 200px;
+    width: 200px;
+    height: 200px;
+    background-color: chartreuse;
+}
