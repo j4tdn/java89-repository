@@ -126,7 +126,7 @@ $('#addButton').on("click", function() {
         let element = addIncomItem($('#description').val(),
                                     value,
                                     id)
-        document.getElementById("$('#incomeList')").innerHTML += element
+        document.getElementById("incomeList").innerHTML += element
         incomeFinal += parseFloat(parseFloat($('#value').val()).toFixed(2))
         $('#incomeValue').text(`+ ${incomeFinal}`)
         incomeCount++;
@@ -144,7 +144,7 @@ $('#addButton').on("click", function() {
                                     value,
                                     id,
                                     percent)
-        document.getElementById("$('#expensesList')").innerHTML += element
+        document.getElementById("expensesList").innerHTML += element
         expensesFinal += parseFloat(parseFloat($('#value').val()).toFixed(2))
         $('#expensesValue').text(`- ${expensesFinal}`)
         
