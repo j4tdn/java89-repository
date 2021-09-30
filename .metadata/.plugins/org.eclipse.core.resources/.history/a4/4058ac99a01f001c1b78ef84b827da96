@@ -1,0 +1,15 @@
+package home.be.service;
+
+import java.util.Collections;
+import java.util.List;
+
+import home.be.bean.Item;
+
+public class ItemServiceImp implements ItemService{
+
+	public List<Item> getItems() {
+		// TODO Auto-generated method stub
+		return Collections.EMPTY_LIST;
+	}
+
+}

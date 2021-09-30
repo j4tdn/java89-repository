@@ -1,0 +1,16 @@
+package home.view;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
+import home.configuration.AppConfig;
+
+public class App {
+public static void main(String[] args) {
+	ApplicationContext context=new AnnotationConfigApplicationContext(AppConfig.class);
+	String[] beans =context.getBeanDefinitionNames();
+	for(String bean : beans) {
+		System.out.println(bean);
+	}
+}
+}

@@ -1,0 +1,8 @@
+package home.bean;
+
+import org.springframework.stereotype.Component;
+
+@Component
+public class MovieRecomender {
+private MovieCatalog movieCatalog;
+}

@@ -1,0 +1,5 @@
+package home.configuration;
+
+public class MovieConfiguration {
+
+}

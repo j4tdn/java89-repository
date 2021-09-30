@@ -1,0 +1,10 @@
+package home.bean;
+
+import org.springframework.stereotype.Component;
+
+@Component
+public class MovieCatalog {
+public void showHotMovie() {
+	System.out.println("adverture");
+}
+}

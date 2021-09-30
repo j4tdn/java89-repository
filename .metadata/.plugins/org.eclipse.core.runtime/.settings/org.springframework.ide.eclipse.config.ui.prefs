@@ -1,0 +1,4 @@
+//com.springsource.config.ui.prefs.activePageIndex\:/ioc-container/src/main/resources/bean-overview.xml=<?xml version\="1.0" encoding\="UTF-8"?>\r\n<activePage index\="0"/>
+//com.springsource.config.ui.prefs.activePageIndex\:/ioc-container/src/main/resources/bean-scope.xml=<?xml version\="1.0" encoding\="UTF-8"?>\r\n<activePage index\="0"/>
+//com.springsource.config.ui.prefs.activePageIndex\:/ioc-container/src/main/resources/spring-beans.xml=<?xml version\="1.0" encoding\="UTF-8"?>\r\n<activePage index\="0"/>
+eclipse.preferences.version=1

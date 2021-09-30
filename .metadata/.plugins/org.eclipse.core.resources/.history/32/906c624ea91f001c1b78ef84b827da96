@@ -1,0 +1,25 @@
+package home.bean;
+
+import org.springframework.stereotype.Component;
+
+//@Component
+public class MovieCatalog {
+
+	private String catalog;
+
+	public void showHotMovie() {
+		System.out.println("adverture");
+		switch (catalog) {
+		case "ACTION":
+			System.out.println("adverture");
+			break;
+
+		default:
+			break;
+		}
+	}
+
+	public MovieCatalog(String catalog) {
+		this.catalog = catalog;
+	}
+}
