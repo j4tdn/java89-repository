@@ -9,16 +9,6 @@ public class Item implements InitializingBean, DisposableBean{
 	private Integer id;
 	private String name;
 	private List<String> providers;
-	
-	public Item() {
-		
-	}
-
-	public Item(Integer id, String name) {
-		super();
-		this.id = id;
-		this.name = name;
-	}
 
 	public Integer getId() {
 		return id;
@@ -26,14 +16,6 @@ public class Item implements InitializingBean, DisposableBean{
 
 	public void setId(Integer id) {
 		this.id = id;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
 	}
 
 	public List<String> getProviders() {
@@ -44,18 +26,41 @@ public class Item implements InitializingBean, DisposableBean{
 		this.providers = providers;
 	}
 
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public Item(Integer id, String name) {
+		super();
+		this.id = id;
+		this.name = name;
+	}
+
+	public Item() {
+		// TODO Auto-generated constructor stub
+	}
+
 	@Override
 	public String toString() {
-		return "Item [id=" + id + ", name=" + name + ", providers=" + providers + "]";
+		// TODO Auto-generated method stub
+		return id + "," + name +","+providers;
 	}
 
 	@Override
 	public void destroy() throws Exception {
-		System.out.println("Item >> Destroy");
+		System.out.println("item>>destroy...");
+		
 	}
 
 	@Override
 	public void afterPropertiesSet() throws Exception {
-		System.out.println("Item >> Init");
+		System.out.println("item>>init...");
+		
+		// TODO Auto-generated method stub
+		
 	}
 }

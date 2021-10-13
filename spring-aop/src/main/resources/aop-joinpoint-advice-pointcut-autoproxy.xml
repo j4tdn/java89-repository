@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- JoinPoint -->
+	<bean id="movieService" class="home.service.MovieService">
+		<property name="name" value="avatar"></property>
+		<property name="catalog" value="adventure"></property>
+	</bean>
+	<!-- advice -->
+
+	<!--<bean id="movieTrackerBefore" class="home.aop.MovieTrackerBefore"></bean> 
+		<bean id="movieTrackerAfter" class="home.aop.MovieTrackerAfter"></bean> -->
+	<bean id="movieTrackerAround" class="home.aop.MovieTrackerAround"></bean>
+	
+	<!-- PoinCut -->
+	
+	<bean id="moviePointCut"
+		class="org.springframework.aop.support.NameMatchMethodPointcut">
+		<property name="mappedName" value="printName"></property>
+	</bean>
+	
+	<!-- advisor -->
+	
+	<bean id="movieAdvisor"
+		class="org.springframework.aop.support.DefaultPointcutAdvisor">
+		<property name="pointcut" ref="moviePointCut"></property>
+		<property name="advice" ref="movieTrackerAround"></property>
+	</bean>
+	
+	
+	<!-- AOP - auto Proxy -->
+	<bean
+		class="org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator">
+		<!-- join point -->
+		<property name="beanNames">
+			<list>
+				<value>movieService</value>
+				<!-- *Service or home.se... -->
+			</list>
+		</property>
+		<!-- advice, point cut -->
+		<property name="interceptorNames">
+			<list>
+				<!--<value>movieTrackerBefore</value> <value>movieTrackerAfter</value> -->
+				<value>movieAdvisor</value>
+			</list>
+		</property>
+	</bean>
+
+	<!-- <bean class="org.springframework.aop.support.DefaultPointcutAdvisor"></bean>  -->
+</beans>

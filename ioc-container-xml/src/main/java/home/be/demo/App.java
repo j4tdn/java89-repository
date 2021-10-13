@@ -1,5 +1,7 @@
 package home.be.demo;
 
+import java.util.Arrays;
+
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -10,41 +12,35 @@ import home.be.service.ItemService;
 
 public class App {
 	public static void main(String[] args) {
-		// IoC container  ApplicationContext
-		 ConfigurableApplicationContext context = new ClassPathXmlApplicationContext("spring-beans.xml");
+		// ioc container
+		@SuppressWarnings("resource")
+		ConfigurableApplicationContext context = new ClassPathXmlApplicationContext("spring-beans.xml");
 		
 		// print beans in context container
-		// String[] beanNames = context.getBeanDefinitionNames();
-		
-		// Arrays.stream(beanNames).forEach(System.out::println);
-		
-		Item itemA = context.getBean("itemA", Item.class);
-		System.out.println(itemA);
-
-		System.out.println("======================");
-		
-		Item itemB = context.getBean("itemB", Item.class);
-		System.out.println(itemB);
-
-		System.out.println("======================");
+		String[] beanNames = context.getBeanDefinitionNames();
+//		Arrays.stream(beanNames).forEach(System.out::println);
 		
 		ItemService service = context.getBean("itemService", ItemService.class);
 		System.out.println(service.getItems());
 		
-//		get ra theo id của bean ở file cấu hình .xml
 		System.out.println("======================");
-		ClientService clientService = context.getBean("clientService", ClientService.class);
-		System.out.println(clientService);
+		Item itema = context.getBean("itemA", Item.class);
+		System.out.println(itema);
+		System.out.println("======================");
+		Item itemb = context.getBean("itemB", Item.class);
+		System.out.println(itemb);
+		System.out.println("======================");
+
+		ClientService clientServive= context.getBean("clientService",ClientService.class);
+		System.out.println(clientServive);
+
+		ItemService serviceA =context.getBean("itemService",ItemService.class);
+		System.out.println("service"+serviceA);
 		
-		System.out.println("=======SCOPE========");
-		System.out.println("--- singleton ---");
-		ItemService serviceA = context.getBean("itemService", ItemService.class);
-		System.out.println("serviceA: " + serviceA);
+		ItemService serviceB =context.getBean("itemService",ItemService.class);
+		System.out.println("service"+serviceB);
 		
-		ItemService serviceB = context.getBean("itemService", ItemService.class);
-		System.out.println("serviceB: " + serviceB);
+		context.close();
 		
-		// goi ham destroy trong Item
-		context.close(); 
 	}
 }
