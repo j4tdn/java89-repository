@@ -17,7 +17,7 @@ public class HibernateCustomerDao implements CustomerDao {
 	private SessionFactory sessionFactory;
 
 	@Override
-	@Transactional
+	
 	public List<Customer> getAll() {
 		Session session = sessionFactory.getCurrentSession();
 //		session.beginTransaction();
@@ -26,6 +26,19 @@ public class HibernateCustomerDao implements CustomerDao {
 		
 
 		return customers;
+	}
+
+	@Override
+	public void save(Customer customer) {
+		Session session = sessionFactory.getCurrentSession();
+		session.saveOrUpdate(customer);
+		
+	}
+	
+	@Override
+	public Customer get(int id) {
+		Session session = sessionFactory.getCurrentSession();
+		return session.get(Customer.class, id);
 	}
 
 }
