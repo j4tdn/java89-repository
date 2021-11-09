@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.spring.dao.CustomerDao;
 import com.spring.entity.Customer;
+import com.spring.sorting.SortOrder;
 
 @Service
 public class CustomerServiceImpl implements CustomerService{
@@ -34,6 +35,27 @@ public class CustomerServiceImpl implements CustomerService{
 	public Customer get(int id) {
 		// TODO Auto-generated method stub
 		return customerDao.get(id);
+	}
+	
+	@Override
+	@Transactional
+	public void delete(int id) {
+		 customerDao.delete(id);
+	}
+
+	@Override
+	@Transactional
+	public List<Customer> search(String param) {
+		// TODO Auto-generated method stub
+		return customerDao.search(param);
+	}
+	
+	
+	@Override
+	@Transactional
+	public List<Customer> getAll(SortOrder sortOrder) {
+		// TODO Auto-generated method stub
+		return customerDao.getAll(sortOrder);
 	}
 	
 }

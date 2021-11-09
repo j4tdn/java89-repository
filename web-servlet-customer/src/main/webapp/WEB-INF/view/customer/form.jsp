@@ -1,6 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%-- <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>    
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>  --%>
+<%@include file="/WEB-INF/taglib/import.jsp" %>   
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,7 +9,7 @@
 <title>Customer-form</title>
 <link rel="stylesheet" 
 	  type="text/css" 
-	  href="${pageContext.request.contextPath}/resources/css/add-customer-style.css"/>
+	  href="${contextPath}/resources/css/add-customer-style.css"/>
 </head>
 <body>
 	<div id= "wrapper">

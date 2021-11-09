@@ -10,7 +10,10 @@ import javax.persistence.Table;
 @Entity
 @Table(name="Customer")
 public class Customer {
-
+	
+	public static final String FIRST_NAME ="first_name";
+	public static final String LAST_NAME ="last_name";
+	public static final String EMAIL ="email";
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id")
