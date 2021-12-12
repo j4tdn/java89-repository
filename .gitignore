@@ -1,5 +1,24 @@
+# Ignore .metadata folder
+.metadata
+Servers/
+
+# Ignore Spring MVC files
+.springBeans
+MANIFEST.MF
+
+# Ignore Eclipse configuration file
+*.project
+*.classpath
+*.settings
+
+# Ignore .gitignore in project
+*/.gitignore
+
 # Compiled class file
+*/bin/
 *.class
+build/
+target/
 
 # Log file
 *.log
