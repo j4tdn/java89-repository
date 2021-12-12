@@ -15,6 +15,7 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
@@ -27,6 +28,7 @@ import com.mchange.v2.c3p0.ComboPooledDataSource;
 @ComponentScan("com.spring")
 @PropertySource({ "classpath:persistence.properties" })
 @EnableWebMvc
+@EnableTransactionManagement
 public class AppConfig implements WebMvcConfigurer {
 
 	@Autowired

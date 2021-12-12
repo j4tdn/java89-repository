@@ -1,9 +1,14 @@
 package com.spring.service;
 
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.stereotype.Service;
 
-@Service
-public interface UserService extends UserDetailsService{
-	
+import com.spring.entity.User;
+import com.spring.model.UserModel;
+
+public interface UserService extends UserDetailsService {
+
+	User findByUsername(String username);
+
+	void save(UserModel userModel);
+
 }

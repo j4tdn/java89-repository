@@ -22,6 +22,7 @@
 		Role:
 		<security:authentication property="principal.authorities" />
 	</p>
+	<p> Firstname: ${user.firstName }, Lastname: ${user.lastName } </p>
 
 	<security:authorize access="hasRole('MANAGER')">
 		<p>

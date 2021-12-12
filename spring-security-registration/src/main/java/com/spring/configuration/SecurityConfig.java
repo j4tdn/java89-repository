@@ -18,6 +18,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	
 	@Autowired
 	private UserService userService;
+	
+	@Autowired
+	private CustomAuthenticationSuccessHandler authenSuccesHandler;
 
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
@@ -30,7 +33,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		http.authorizeRequests().antMatchers("/resources/**", "/signup").permitAll().antMatchers("/")
 				.hasRole("EMPLOYEE").antMatchers("/leaders/**").hasRole("MANAGER").antMatchers("/systems/**")
 				.hasRole("ADMIN").anyRequest().authenticated().and().formLogin().loginPage("/login")
-				.failureUrl("/login?error").loginProcessingUrl("/authenticate").permitAll().and().logout().permitAll()
+				.failureUrl("/login?error").loginProcessingUrl("/authenticate")
+				.successHandler(authenSuccesHandler)
+				.permitAll()
+				.and().logout().permitAll()
 				.and().exceptionHandling().accessDeniedPage("/access-denied");
 	}
 

@@ -17,7 +17,7 @@
 	
 	<p>User: <security:authentication property="principal.username"/> </p>
 	<p>Role: <security:authentication property="principal.authorities"/> </p>
-		
+	<p> Firstname: ${user.firstName }, Lastname: ${user.lastName } </p>	
 	<form:form method="POST" action="${contextPath }/logout">
 		<input type="submit" value="logout">
 	</form:form>
