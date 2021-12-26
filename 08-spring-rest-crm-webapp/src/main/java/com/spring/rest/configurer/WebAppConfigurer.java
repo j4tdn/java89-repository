@@ -1,4 +1,4 @@
-package com.spring.config;
+package com.spring.rest.configurer;
 
 import java.beans.PropertyVetoException;
 import java.util.Properties;
@@ -25,11 +25,11 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import com.mchange.v2.c3p0.ComboPooledDataSource;
 
 @Configuration
-@ComponentScan("com.spring")
+@ComponentScan("com.spring.rest")
 @EnableWebMvc
-@PropertySource("classpath:persistence-mysql.properties")
+@PropertySource("classpath:application.properties")
 @EnableTransactionManagement
-public class AppConfig implements WebMvcConfigurer {
+public class WebAppConfigurer implements WebMvcConfigurer {
 
 	@Autowired
 	private Environment env;

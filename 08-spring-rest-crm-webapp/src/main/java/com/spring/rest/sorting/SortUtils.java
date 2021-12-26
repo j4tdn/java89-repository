@@ -1,9 +1,9 @@
-package com.spring.sorting;
+package com.spring.rest.sorting;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import com.spring.entity.Customer;
+import com.spring.rest.entity.Customer;
 
 public class SortUtils {
 	private SortUtils() {

@@ -1,9 +1,9 @@
-package com.spring.dao;
+package com.spring.rest.dao;
 
 import java.util.List;
 
-import com.spring.entity.Customer;
-import com.spring.sorting.SortOrder;
+import com.spring.rest.entity.Customer;
+import com.spring.rest.sorting.SortOrder;
 
 public interface CustomerDao {
 	List<Customer> getAll();

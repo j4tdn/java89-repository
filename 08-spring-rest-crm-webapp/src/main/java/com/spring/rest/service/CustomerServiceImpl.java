@@ -1,4 +1,4 @@
-package com.spring.service;
+package com.spring.rest.service;
 
 import java.util.List;
 
@@ -6,9 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.spring.dao.CustomerDao;
-import com.spring.entity.Customer;
-import com.spring.sorting.SortOrder;
+import com.spring.rest.dao.CustomerDao;
+import com.spring.rest.entity.Customer;
+import com.spring.rest.sorting.SortOrder;
 
 @Service
 public class CustomerServiceImpl implements CustomerService {

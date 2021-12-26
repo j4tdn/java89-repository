@@ -1,4 +1,4 @@
-package com.spring.sorting;
+package com.spring.rest.sorting;
 
 import java.util.ArrayList;
 import java.util.Iterator;

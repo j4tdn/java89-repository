@@ -1,4 +1,4 @@
-package com.spring.dao;
+package com.spring.rest.dao;
 
 import java.util.List;
 
@@ -7,8 +7,8 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.spring.entity.Customer;
-import com.spring.sorting.SortOrder;
+import com.spring.rest.entity.Customer;
+import com.spring.rest.sorting.SortOrder;
 
 @Repository
 public class HibernateCustomerDao implements CustomerDao {

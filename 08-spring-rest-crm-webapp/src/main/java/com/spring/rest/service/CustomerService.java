@@ -1,9 +1,9 @@
-package com.spring.service;
+package com.spring.rest.service;
 
 import java.util.List;
 
-import com.spring.entity.Customer;
-import com.spring.sorting.SortOrder;
+import com.spring.rest.entity.Customer;
+import com.spring.rest.sorting.SortOrder;
 
 public interface CustomerService {
 	List<Customer> getAll();

@@ -1,4 +1,4 @@
-package com.spring.sorting;
+package com.spring.rest.sorting;
 
 public class SortParam {
 	private String property;

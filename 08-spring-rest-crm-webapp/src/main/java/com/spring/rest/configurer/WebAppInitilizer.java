@@ -1,8 +1,8 @@
-package com.spring.config;
+package com.spring.rest.configurer;
 
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
-public class DispatcherServletInitilizer extends AbstractAnnotationConfigDispatcherServletInitializer{
+public class WebAppInitilizer extends AbstractAnnotationConfigDispatcherServletInitializer{
 
 	@Override
 	protected Class<?>[] getRootConfigClasses() {
@@ -12,7 +12,7 @@ public class DispatcherServletInitilizer extends AbstractAnnotationConfigDispatc
 
 	@Override
 	protected Class<?>[] getServletConfigClasses() {
-		return new Class[] {AppConfig.class};
+		return new Class[] {WebAppConfigurer.class};
 	}
 
 	@Override
