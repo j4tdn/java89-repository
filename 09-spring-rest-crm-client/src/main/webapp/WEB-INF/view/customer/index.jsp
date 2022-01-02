@@ -28,9 +28,9 @@
 
 			<table>
 				<tr>
-					<c:url var="orderByFirstName" value="/customer/orderByFirstName" />
-					<c:url var="orderByLastName" value="/customer/orderByLastName" />
-					<c:url var="orderByEmail" value="/customer/orderByEmail" />
+					<c:url var="orderByFirstName" value="/customer?orderBy=firstName" />
+					<c:url var="orderByLastName" value="/customer?orderBy=lastName" />
+					<c:url var="orderByEmail" value="/customer?orderBy=email" />
 					<th><a href="${orderByFirstName}">First name</a></th>
 					<th><a href="${orderByLastName}">Last name</a></th>
 					<th><a href="${orderByEmail}">Email name</a></th>

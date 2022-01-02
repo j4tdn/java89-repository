@@ -17,9 +17,9 @@ public class SortUtils {
 		private static final long serialVersionUID = 4293312786696007788L;
 
 		{
-			put("orderByFirstName", Customer.FIRST_NAME);
-			put("orderByLastName", Customer.LAST_NAME);
-			put("orderByEmail", Customer.EMAIL);
+			put("firstName", Customer.FIRST_NAME);
+			put("lastName", Customer.LAST_NAME);
+			put("email", Customer.EMAIL);
 		}
 	};
 }

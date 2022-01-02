@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.spring.model.Customer;
-import com.spring.service.CustomerService;
+import com.spring.service.CustomerRestServiceClient;
 import com.spring.sorting.SortOrder;
 import com.spring.sorting.SortUtils;
 
@@ -22,13 +22,13 @@ import com.spring.sorting.SortUtils;
 public class CustomerController {
 
 	@Autowired
-	private CustomerService customerService;
+	private CustomerRestServiceClient customerService;
 
-	@GetMapping(value = {"", "/", "/{orderBy}"})
-	public String index(Model model, @PathVariable(required = false, value = "orderBy") String orderByLink) {
+	@GetMapping(value = {"", "/"})
+	public String index(Model model, @RequestParam(required = false, value = "orderBy") String orderByLink) {
 		// orderByFirstName(sortByFirstName), orderByLastName(...), orderByEmail(..)
-		// List<Customer> customers = customerService.getAll(getSortOrder(orderByLink));
-		List<Customer> customers = customerService.getAll();
+		List<Customer> customers = customerService.getAll(orderByLink);
+		
 		
 		// add to model
 		model.addAttribute("customers", customers);

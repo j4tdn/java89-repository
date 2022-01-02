@@ -14,38 +14,55 @@ import org.springframework.web.client.RestTemplate;
 import com.spring.model.Customer;
 
 @Service
-public class CustomerServiceRestClientImpl implements CustomerService {
+public class CustomerRestServiceRestClientImpl implements CustomerRestServiceClient {
 
 	private RestTemplate restTemplate;
 
 	private String crmRestUrl;
-		
+
 	private Logger logger = Logger.getLogger(getClass().getName());
-	
+
 	@Autowired
-	public CustomerServiceRestClientImpl(RestTemplate theRestTemplate, 
-										@Value("${crm.rest.url}") String theUrl) {
+	public CustomerRestServiceRestClientImpl(RestTemplate theRestTemplate, @Value("${crm.rest.url}") String theUrl) {
 		restTemplate = theRestTemplate;
 		crmRestUrl = theUrl;
-				
+
 		logger.info("Loaded property:  crm.rest.url=" + crmRestUrl);
 	}
-	
+
 	@Override
 	public List<Customer> getAll() {
-		
+
 		logger.info("in getCustomers(): Calling REST API " + crmRestUrl);
 
 		// make REST call
-		ResponseEntity<List<Customer>> responseEntity = 
-											restTemplate.exchange(crmRestUrl, HttpMethod.GET, null, 
-																  new ParameterizedTypeReference<List<Customer>>() {});
+		ResponseEntity<List<Customer>> responseEntity = restTemplate.exchange(crmRestUrl, HttpMethod.GET, null,
+				new ParameterizedTypeReference<List<Customer>>() {
+				});
+
+		// get the list of customers from response
+		List<Customer> customers = responseEntity.getBody();
+
+		logger.info("in All: customers" + customers);
+
+		return customers;
+	}
+
+	@Override
+	public List<Customer> getAll(String orderByLink) {
+		logger.info("in getAll: Calling REST API " + crmRestUrl);
+
+		// make REST call
+		// /customers/sorting?orderBy=firstName&isAsc=?
+		ResponseEntity<List<Customer>> responseEntity = restTemplate.exchange(crmRestUrl + "/sorting?orderBy=" + orderByLink,
+				HttpMethod.GET, null, new ParameterizedTypeReference<List<Customer>>() {
+				});
 
 		// get the list of customers from response
 		List<Customer> customers = responseEntity.getBody();
 
 		logger.info("in getCustomers(): customers" + customers);
-		
+
 		return customers;
 	}
 
@@ -55,33 +72,31 @@ public class CustomerServiceRestClientImpl implements CustomerService {
 		logger.info("in getCustomer(): Calling REST API " + crmRestUrl);
 
 		// make REST call
-		Customer theCustomer = 
-				restTemplate.getForObject(crmRestUrl + "/" + theId, 
-										  Customer.class);
+		Customer theCustomer = restTemplate.getForObject(crmRestUrl + "/" + theId, Customer.class);
 
 		logger.info("in saveCustomer(): theCustomer=" + theCustomer);
-		
+
 		return theCustomer;
 	}
 
 	@Override
-	public void save(Customer theCustomer) {
+	public void save(Customer customer) {
 
 		logger.info("in saveCustomer(): Calling REST API " + crmRestUrl);
-		
-		int employeeId = theCustomer.getId();
+
+		int customerId = customer.getId();
 
 		// make REST call
-		if (employeeId == 0) {
-			// add employee
-			restTemplate.postForEntity(crmRestUrl, theCustomer, String.class);			
-		
+		if (customerId == 0) {
+			// add customer
+			restTemplate.postForEntity(crmRestUrl, customer, String.class);
+
 		} else {
-			// update employee
-			restTemplate.put(crmRestUrl, theCustomer);
+			// update customer
+			restTemplate.put(crmRestUrl, customer);
 		}
 
-		logger.info("in saveCustomer(): success");	
+		logger.info("in saveCustomer(): success");
 	}
 
 	@Override
