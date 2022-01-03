@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import com.spring.model.Customer;
+import com.spring.rest.pagination.Pageable;
 
 @Service
 public class CustomerRestClientImpl implements CustomerRestClient {
@@ -42,13 +43,13 @@ public class CustomerRestClientImpl implements CustomerRestClient {
 	}
 
 	@Override
-	public List<Customer> getAll(String sort) {
-		LOG.info("CustomerRestClientImpl >> getAll(sort)");
-		ResponseEntity<List<Customer>> responseEntity = restTemplate.exchange(
-				crmRestUrl + "?sort=" + sort,
+	public Pageable<Customer> getAll(String sort, int page) {
+		LOG.info("CustomerRestClientImpl >> getAll(sort, page)");
+		ResponseEntity<Pageable<Customer>> responseEntity = restTemplate.exchange(
+				crmRestUrl + "?sort=" + sort + "&page=" + page,
 				HttpMethod.GET, 
 				null, 
-				new ParameterizedTypeReference<List<Customer>>() {
+				new ParameterizedTypeReference<Pageable<Customer>>() {
 				});
 		return responseEntity.getBody();
 	}

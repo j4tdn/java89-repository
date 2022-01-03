@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.type.IntegerType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -29,6 +30,26 @@ public class HibernateCustomerDao implements CustomerDao {
 		
 		return session.createNativeQuery("SELECT * FROM customer" + sortOrder.getSqlOrder(),Customer.class)
 				.getResultList();
+	}
+	
+	@Override
+	public List<Customer> getAll(SortOrder sortOrder, int offset, int recordsPerPage) {
+		final String sql = "SELECT * FROM customer " + sortOrder.getSqlOrder() + " LIMIT :offset, :rowcount";
+		return sessionFactory.getCurrentSession()
+					.createNativeQuery(sql, Customer.class)
+					.setParameter("offset", offset, IntegerType.INSTANCE)
+					.setParameter("rowcount", recordsPerPage, IntegerType.INSTANCE)
+					.getResultList();
+	}
+	
+	@Override
+	public int countTotalRecords() {
+		Session session = sessionFactory.getCurrentSession();
+		// INT >>> BigInteger
+		// Number >>> BigDecimal
+		return (int)session.createNativeQuery("SELECT COUNT(*) counter FROM customer")
+					.addScalar("counter", IntegerType.INSTANCE)
+					.uniqueResult();
 	}
 	
 	@Override

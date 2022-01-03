@@ -28,6 +28,25 @@ public class CustomerServiceImpl implements CustomerService {
 	public List<Customer> getAll(String orderBy, boolean isAsc) {
 		return customerDao.getAll(getSortOrder(orderBy, isAsc));
 	}
+	
+	@Override
+	@Transactional
+	public List<Customer> getAll(String sortProperty, boolean sortDirection, int offset, int recordsPerPage) {
+		return customerDao.getAll(getSortOrder(sortProperty, sortDirection), offset, recordsPerPage);
+	}
+	
+	
+	@Override
+	@Transactional
+	public int countTotalRecords() {
+		return customerDao.countTotalRecords();
+	}
+	
+	@Override
+	@Transactional
+	public List<Customer> search(String keyword) {
+		return customerDao.search(keyword);
+	}
 
 	@Override
 	@Transactional
@@ -45,12 +64,6 @@ public class CustomerServiceImpl implements CustomerService {
 	@Transactional
 	public void delete(int id) {
 		customerDao.delete(id);
-	}
-
-	@Override
-	@Transactional
-	public List<Customer> search(String keyword) {
-		return customerDao.search(keyword);
 	}
 
 	private SortOrder getSortOrder(String orderBy, boolean isAsc) {

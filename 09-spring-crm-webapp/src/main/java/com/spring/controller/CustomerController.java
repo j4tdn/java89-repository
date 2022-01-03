@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.spring.model.Customer;
+import com.spring.rest.pagination.Pageable;
 import com.spring.service.CustomerRestClient;
 
 @Controller
@@ -19,12 +20,19 @@ import com.spring.service.CustomerRestClient;
 public class CustomerController {
 
 	@Autowired
-	private CustomerRestClient customerService;
-
+	private CustomerRestClient customerRestClient;
+	
 	@GetMapping(value = {"", "/"})
-	public String getAll(Model model, @RequestParam(defaultValue = "firstName") String sort) {
-		List<Customer> customers = customerService.getAll(sort);
-		model.addAttribute("customers", customers);
+	public String getAll(Model model, 
+			@RequestParam(value="sort", defaultValue = "firstName") String sort,
+			@RequestParam(value="page", defaultValue = "1") int page) {
+		// TODO: PageAble before sorting
+		Pageable<Customer> pageable = customerRestClient.getAll(sort, page);
+		
+		model.addAttribute("currentPage", page);
+		model.addAttribute("totalPages", pageable.getTotalPages());
+		model.addAttribute("customers", pageable.getElements());
+		
 		return "customer/index";
 	}
 	
@@ -34,7 +42,7 @@ public class CustomerController {
 			return "redirect:/customer";
 		}
 		
-		List<Customer> customers = customerService.search(keyword.trim());
+		List<Customer> customers = customerRestClient.search(keyword.trim());
 		model.addAttribute("customers", customers);
 		return "customer/index";
 	}
@@ -47,20 +55,20 @@ public class CustomerController {
 
 	@GetMapping("/update")
 	public String showFormForUpdate(@RequestParam("id") int id, Model model) {
-		Customer customer = customerService.get(id);
+		Customer customer = customerRestClient.get(id);
 		model.addAttribute("customer", customer);
 		return "customer/form";
 	}
 
 	@GetMapping("/delete")
 	public String delete(@RequestParam("id") int id) {
-		customerService.delete(id);
+		customerRestClient.delete(id);
 		return "redirect:/customer";
 	}
 	
 	@PostMapping("/save")
 	public String save(@ModelAttribute("customer") Customer customer) {
-		customerService.save(customer);
+		customerRestClient.save(customer);
 		return "redirect:/customer";
 	}
 	
