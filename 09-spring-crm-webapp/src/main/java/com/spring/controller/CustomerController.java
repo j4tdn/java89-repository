@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.spring.model.Customer;
 import com.spring.service.CustomerRestClient;
 
+import pagination.Pagable;
+
 @Controller
 @RequestMapping("customer")
 public class CustomerController {
@@ -22,9 +24,17 @@ public class CustomerController {
 	private CustomerRestClient customerService;
 
 	@GetMapping(value = {"", "/"})
-	public String getAll(Model model, @RequestParam(defaultValue = "firstName") String sort) {
-		List<Customer> customers = customerService.getAll(sort);
+	public String getAll(Model model, 
+			@RequestParam(value = "sort", defaultValue = "firstName") String sort,
+			@RequestParam(value = "page", defaultValue = "1") int page) {
+		Pagable<Customer> customerPagable = customerService.getAll(sort, page);
+		
+		List<Customer> customers = customerPagable.getElements();
+		int totalPages = customerPagable.getTotalPages();
+		
 		model.addAttribute("customers", customers);
+		model.addAttribute("totalPages", totalPages);
+		model.addAttribute("currentPage", page);
 		return "customer/index";
 	}
 	

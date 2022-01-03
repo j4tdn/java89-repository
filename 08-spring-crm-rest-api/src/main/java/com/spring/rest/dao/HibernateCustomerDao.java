@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.type.IntegerType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -32,6 +33,40 @@ public class HibernateCustomerDao implements CustomerDao {
 	}
 	
 	@Override
+	public List<Customer> getAll(SortOrder sortOrder, int offset, int elementsPerPage) {
+		final String sql = "SELECT * FROM customer " + sortOrder.getSqlOrder() + " LIMIT :offset, :rowcount";
+		
+		return sessionFactory.getCurrentSession()
+				.createNativeQuery(sql,Customer.class)
+				.setParameter("offset", offset)
+				.setParameter("rowcount", elementsPerPage)
+				.getResultList();
+	}
+	
+	@Override
+	public int countTotalElements() {
+		Session session = sessionFactory.getCurrentSession();
+		return (int) session.createNativeQuery("SELECT COUNT(*) count FROM customer")
+					.addScalar("count", IntegerType.INSTANCE)
+				    .uniqueResult();
+	}
+	
+	@Override
+	public List<Customer> search(String keyword) {
+		// search by firstName || lastName with case insensitive
+		Session session = sessionFactory.getCurrentSession();
+		
+		// additional: mark insensitive
+		String sql = "SELECT * FROM customer \n"
+				+ "WHERE first_name LIKE :keyword\n"
+				+ "OR last_name LIKE :keyword";
+		
+		return session.createNativeQuery(sql, Customer.class)
+			   .setParameter("keyword", "%" + keyword + "%")
+			   .getResultList();
+	}
+
+	@Override
 	public Customer get(int id) {
 		Session session = sessionFactory.getCurrentSession();
 		return session.get(Customer.class, id);
@@ -51,19 +86,4 @@ public class HibernateCustomerDao implements CustomerDao {
 				      .executeUpdate();
 	}
 	
-	@Override
-	public List<Customer> search(String keyword) {
-		// search by firstName || lastName with case insensitive
-		Session session = sessionFactory.getCurrentSession();
-		
-		// additional: mark insensitive
-		String sql = "SELECT * FROM customer \n"
-				+ "WHERE first_name LIKE :keyword\n"
-				+ "OR last_name LIKE :keyword";
-		
-		return session.createNativeQuery(sql, Customer.class)
-			   .setParameter("keyword", "%" + keyword + "%")
-			   .getResultList();
-	}
-
 }

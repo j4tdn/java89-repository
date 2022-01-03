@@ -7,7 +7,11 @@ import com.spring.rest.entity.Customer;
 public interface CustomerService {
 	List<Customer> getAll();
 	
-	List<Customer> getAll(String sortBy, boolean isAsc);
+	List<Customer> getAll(String sortProperty, Boolean sortDirection);
+	
+	List<Customer> getAll(String sortProperty, Boolean sortDirection, int offset, int elementsPerPage);
+	
+	int countTotalElements();
 	
 	List<Customer> search(String keyword);
 	
@@ -16,6 +20,7 @@ public interface CustomerService {
 	void save(Customer customer);
 	
 	void delete(int id);
+
 	
-	
+
 }

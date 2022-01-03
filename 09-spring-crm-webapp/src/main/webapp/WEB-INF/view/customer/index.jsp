@@ -10,6 +10,9 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet">
     
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    
 </head>
 <body>
 	<header>
@@ -64,23 +67,42 @@
 			</tbody>
 		</table>
 		
-		<nav class="float-end">
-			<ul class="pagination">
-				<li class="page-item">
-					<a href="#" aria-label="Previous" class="page-link" > 
-						<span aria-hidden="true">&laquo;</span>
-					</a>
-				</li>
-				<li class="page-item"><a class="page-link" href="#">1</a></li>
-				<li class="page-item"><a class="page-link" href="#">2</a></li>
-				<li class="page-item"><a class="page-link" href="#">3</a></li>
-				<li class="page-item">
-					<a href="#" aria-label="Next" class="page-link" > 
-						<span aria-hidden="true">&raquo;</span>
-					</a>
-				</li>
-			</ul>
-		</nav>
+		<c:if test="${totalPages > 1}">
+			<nav class="float-end">
+				<ul class="pagination">
+					<c:if test="${currentPage != 1}">
+						<li class="page-item">
+							<a href="${contextPath}/customer?page=${currentPage-1}" aria-label="Previous" class="page-link" > 
+								<span aria-hidden="true">&laquo;</span>
+							</a>
+						</li>
+					</c:if>
+					
+					<c:forEach var="page" begin="1" end="${totalPages}">
+						
+						<li class="page-item page-toggle">
+						<c:choose>
+							<c:when test="${page == currentPage}">
+								<a class="page-link bg-warning" href="${contextPath}/customer?page=${page}">${page}</a>
+							</c:when>
+							<c:otherwise>
+								<a class="page-link" href="${contextPath}/customer?page=${page}">${page}</a>
+							</c:otherwise>
+						</c:choose>
+						</li>
+						
+					</c:forEach>
+					
+					<c:if test="${currentPage != totalPages}">
+						<li class="page-item">
+							<a href="${contextPath}/customer?page=${currentPage+1}" aria-label="Next" class="page-link" > 
+								<span aria-hidden="true">&raquo;</span>
+							</a>
+						</li>
+					</c:if>
+				</ul>
+			</nav>
+		</c:if>
 	</main>
 
 	<footer class="bg-light fixed-bottom py-3 text-center">

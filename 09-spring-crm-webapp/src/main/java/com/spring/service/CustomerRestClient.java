@@ -4,13 +4,23 @@ import java.util.List;
 
 import com.spring.model.Customer;
 
+import pagination.Pagable;
+
 public interface CustomerRestClient {
 
-	List<Customer> getAll();
-
-	List<Customer> getAll(String sort);
+	Pagable<Customer> getAll(String sort, int page);
+	
+	/**
+	 * Pagination
+	 */
+	int countTotalElements();
 	
 	List<Customer> search(String keyword);
+	
+	/**
+	 * Pagination
+	 */
+	int countTotalElements(String keyword);
 
 	Customer get(int customerId);
 
@@ -19,5 +29,5 @@ public interface CustomerRestClient {
 	void delete(int customerId);
 
 	
-
+	
 }

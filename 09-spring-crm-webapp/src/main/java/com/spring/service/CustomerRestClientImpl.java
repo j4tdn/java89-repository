@@ -13,6 +13,8 @@ import org.springframework.web.client.RestTemplate;
 
 import com.spring.model.Customer;
 
+import pagination.Pagable;
+
 @Service
 public class CustomerRestClientImpl implements CustomerRestClient {
 
@@ -28,29 +30,28 @@ public class CustomerRestClientImpl implements CustomerRestClient {
 		crmRestUrl = theUrl;
 		LOG.info("CustomerRestClientImpl >> Loaded property:  crm.rest.url=" + crmRestUrl);
 	}
-
+	
 	@Override
-	public List<Customer> getAll() {
-		LOG.info("CustomerRestClientImpl >> getAll");
-		ResponseEntity<List<Customer>> responseEntity = restTemplate.exchange(
-				crmRestUrl, 
-				HttpMethod.GET, 
-				null,
-				new ParameterizedTypeReference<List<Customer>>() {
+	public Pagable<Customer> getAll(String sort, int page) {
+		LOG.info("CustomerRestClientImpl >> getAll(sort)");
+		ResponseEntity<Pagable<Customer>> responseEntity = restTemplate.exchange(
+				crmRestUrl + "?sort=" + sort + "&page=" + page,
+				HttpMethod.GET,
+				null, 
+				new ParameterizedTypeReference<Pagable<Customer>>() {
 				});
 		return responseEntity.getBody();
 	}
-
+	
 	@Override
-	public List<Customer> getAll(String sort) {
-		LOG.info("CustomerRestClientImpl >> getAll(sort)");
-		ResponseEntity<List<Customer>> responseEntity = restTemplate.exchange(
-				crmRestUrl + "?sort=" + sort,
+	public int countTotalElements() {
+		ResponseEntity<Integer> response = restTemplate.exchange(
+				crmRestUrl + "/total-elements",
 				HttpMethod.GET, 
 				null, 
-				new ParameterizedTypeReference<List<Customer>>() {
+				new ParameterizedTypeReference<Integer>() {
 				});
-		return responseEntity.getBody();
+		return response.getBody();
 	}
 	
 	@Override
@@ -63,6 +64,11 @@ public class CustomerRestClientImpl implements CustomerRestClient {
 				new ParameterizedTypeReference<List<Customer>>() {
 				});
 		return responseEntity.getBody();
+	}
+	
+	@Override
+	public int countTotalElements(String keyword) {
+		return 0;
 	}
 
 	@Override

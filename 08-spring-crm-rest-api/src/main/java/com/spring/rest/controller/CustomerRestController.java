@@ -17,6 +17,8 @@ import com.spring.rest.entity.Customer;
 import com.spring.rest.exception.handler.EntityNotFoundException;
 import com.spring.rest.service.CustomerService;
 
+import pagination.Pagable;
+
 @RestController
 @RequestMapping("/api")
 public class CustomerRestController {
@@ -26,12 +28,15 @@ public class CustomerRestController {
 
 	// GET /customers?sort=firstName,desc
 	// GET /customers?sort=firstName >> default as asc
+	
 	@GetMapping("/customers")
-	public List<Customer> getCustomersWithSorting(@RequestParam(defaultValue = "firstName,asc") String sort) {
-		// sort=firstName
+	public Pagable<Customer> getCustomers(
+			@RequestParam(value = "sort", defaultValue = "firstName,asc") String sort,
+			@RequestParam(value = "page", defaultValue = "1") int page) {
+		// SORTING
 		String sortProperty = sort;
 		Boolean sortDirection = true;
-		// sort=firstName,desc
+		// sort=firstName, descending
 		if (sort != null && sort.contains(",")) {
 			String[] sortParams = sort.split(",");
 			if (sortParams.length == 2) {
@@ -39,7 +44,25 @@ public class CustomerRestController {
 				sortDirection = sortParams[1].equalsIgnoreCase("asc");
 			}
 		}
-		return customerService.getAll(sortProperty, sortDirection);
+		
+		// PAGINATION
+		// Step 1: count total of elements
+		int totalElements = customerService.countTotalElements();
+		int elementsPerPage = 6; // could be configured
+
+		// Step 2: count total of pages and sent to UI page
+		int totalPages = (int) Math.ceil((float) totalElements / elementsPerPage);
+
+		// Step 3: get offset, row count=elementsPerPage
+		int offset = (page - 1) * elementsPerPage;
+				
+		// Step 4: get data base of current page (offset, row count)
+		return new Pagable<>(customerService.getAll(sortProperty, sortDirection, offset, elementsPerPage), totalPages);
+	}
+	
+	@GetMapping("/customers/total-elements") 
+	public int countTotalElements() {
+		return customerService.countTotalElements();
 	}
 	
 	// NOW: GET http://localhost:8080/08-spring-crm-rest-api/api/customers/filter?search=david
