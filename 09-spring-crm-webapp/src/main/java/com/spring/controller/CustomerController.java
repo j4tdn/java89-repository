@@ -26,7 +26,7 @@ public class CustomerController {
 	public String getAll(Model model, 
 			@RequestParam(value="sort", defaultValue = "firstName") String sort,
 			@RequestParam(value="page", defaultValue = "1") int page) {
-		// TODO: PageAble before sorting
+		// PageAble before sorting
 		Pageable<Customer> pageable = customerRestClient.getAll(sort, page);
 		
 		model.addAttribute("currentPage", page);
