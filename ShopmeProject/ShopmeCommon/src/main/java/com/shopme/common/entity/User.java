@@ -104,6 +104,7 @@ public class User {
 	}
 
 	public void setPhotos(String photos) {
+		// photos = photos.isEmpty() ? null : photos;
 		this.photos = photos;
 	}
 
@@ -149,5 +150,13 @@ public class User {
 	@Transient
 	public String getFullName() {
 		return firstName + " " + lastName;
+	}
+	
+	@Transient
+	public String getPhotosImagePath() {
+		if (id == null || photos == null) {
+			return "/images/default-user.png";
+		}
+		return "/user-photos/" + this.id + "/" + this.photos; 
 	}
 }

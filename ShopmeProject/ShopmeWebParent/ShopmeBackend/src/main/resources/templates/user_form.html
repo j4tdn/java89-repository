@@ -8,8 +8,11 @@
 	<title>Create new user</title>
 	
 	<link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+	<link rel="stylesheet" th:href="@{/css/style.css}" />
+	
 	<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
 	<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+	
 </head>
 <body>
 	<div class="container-fluid">
@@ -88,12 +91,14 @@
 			</div>
 		</div>
 		
-		<!-- Add User Form here  -->
 		<form th:action="@{/users/save}" method="post" style="max-width: 700px; margin: 0 auto" 
-			th:object="${user}" onsubmit="return checkEmailUnique(this);">
+			th:object="${user}" onsubmit="return checkEmailUnique(this);" 
+			enctype="multipart/form-data">
 			
-			<input type="hidden" th:field="*{id}" />
+			
 			<div class="border border-secondary rounded p-3">
+				<input type="hidden" th:field="*{id}" />
+			
 				<div class="form-group row">
 					<label class="col-sm-4 col-form-label">E-mail:</label>
 					<div class="col-sm-8">
@@ -118,11 +123,13 @@
 				<div class="form-group row">
 					<label class="col-sm-4 col-form-label">Password:</label>
 					<div class="col-sm-8">
+						<!-- add  -->
 						<input th:if="${user.id == null}" type="password" class="form-control" 
-							th:field="*{password}" required minlength="8" maxlength="20"  />
+							th:field="*{password}" minlength="8" maxlength="20" required />
 						
+						<!-- update, leave password blank means does not change the password  -->
 						<input th:if="${user.id != null}" type="password" class="form-control" 
-							th:field="*{password}" minlength="8" maxlength="20"  />				
+							th:field="*{password}" minlength="8" maxlength="20" placeholder="leave blank if you don't want to change password"  />				
 					</div>
 				</div>		
 		
@@ -130,13 +137,13 @@
 					<label class="col-sm-4 col-form-label">Roles:</label>
 					<div class="col-sm-8">
 						<th:block th:each="role : ${listRoles}">
-						<input type="checkbox" th:field="*{roles}" 
-							th:text="${role.name}"
-							th:value="${role.id}"
-							class="m-2"
-						/>
-						- <small>[[${role.description}]]</small>
-						<br/>
+							<input type="checkbox" th:field="*{roles}" 
+								th:text="${role.name}"
+								th:value="${role.id}"
+								class="m-2"
+							/>
+							- <small>[[${role.description}]]</small>
+							<br/>
 						</th:block>
 					</div>
 				</div>		
@@ -151,11 +158,11 @@
 				<div class="form-group row">
 					<label class="col-sm-4 col-form-label">Photos:</label>
 					<div class="col-sm-8">
+						<!-- keep the old photos -->
 						<input type="hidden" th:field="*{photos}" />
-						<input type="file" id="fileImage" name="image" accept="image/png, image/jpeg"
-							class="mb-2" />
-						<img id="thumbnail" alt="Photos preview"
-							class="img-fluid" />
+						<input type="file" id="fileImage" name="image" accept="image/png, image/jpeg" class="mb-2" />
+						<img id="thumbnail" alt="Photos preview" th:src="@{${user.photosImagePath}}"
+							class="img-fluid" /> 
 					</div>
 				</div>						
 						
@@ -176,14 +183,39 @@
 			$("#buttonCancel").on('click', function() {
 				window.location = '[[@{/users}]]';
 			});
+			
+			$("#fileImage").on('change', function() {
+				var file = this.files[0];
+				var size = file.size;
+				// 1MB 1KB 1B -> 1024 * 1204
+				if (size > 1048576) {
+					this.setCustomValidity("You must choose an image less than 1MB !");
+					this.reportValidity(); // prevent show invalid file in form and show error message
+				} else {
+					this.setCustomValidity("");
+					showImageThumbnail(file);
+				}
+			});
 		})
+		
+		/* https://stackoverflow.com/questions/16500848/how-to-generate-a-thumbnail-image-after-adding-an-image-inside-an-input-type-fi
+		https://developer.mozilla.org/en-US/docs/Web/API/FileReader/readAsDataURL */
+		function showImageThumbnail(file) {
+			var reader = new FileReader();
+			reader.onload = function(e) {
+				$("#thumbnail").attr('src', e.target.result);
+			}
+			reader.readAsDataURL(file);
+		}
+		
 		
 		function checkEmailUnique(form) {
 			url = "[[@{/users/check_email}]]";
+			userId = $("#id").val();
 			userEmail = $("#email").val();
 			csrfValue = $("input[name='_csrf']").val();
 			
-			params = {email: userEmail, _csrf: csrfValue};
+			params = {id: userId, email: userEmail, _csrf: csrfValue};
 			
 			$.post(url, params, function(response) {
 				if (response == "OK") {
